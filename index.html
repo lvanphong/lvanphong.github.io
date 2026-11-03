@@ -1,632 +1,292 @@
+Here is a complete, SEO-optimized HTML document for ClipDock. It presents a clean, friendly landing page that guides non-technical Windows users to download and run the app, with a prominent download button and step-by-step instructions.
+```html
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head> <meta name="google-site-verification" content="sYW1mY6dB9U5vkjDcmDD5JfQBnrwonW5UJOpx_EiQLo" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teknawy — Free Client-Side Image Compressor & Resizer</title>
-    <meta name="description" content="Fast, private, client-side batch image compressor and resizer. No server uploads.">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#eef2ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <!-- JSZip for Batch Downloads -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
-    <style>
-        .adsense-placeholder {
-            border: 2px dashed #cbd5e1;
-            background-color: #f8fafc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-    </style>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClipDock - Download YouTube Video, MP3 Audio &amp; Subtitles on Windows</title>
+<meta name="description" content="ClipDock is a free Windows 10/11 desktop downloader for YouTube video (MP4), audio (MP3 with cover art) and captions (SRT/VTT). Installs per user with no admin rights. Only FFmpeg is ever downloaded, and only after you agree.">
+<meta name="keywords" content="desktop-apps, downloader, downloader-for-youtube, ffmpeg, gui, mp3-downloader, playlist, playlist-downloader, pyside6, python, srt-subtitles, subtitles, webvtt, windows, windows-10, windows-11, youtube-dl, youtube-dl-gui, youtube-downloader, yt-dlp">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ClipDock">
+<meta name="theme-color" content="#7c3aed">
+<link rel="canonical" href="https://github.com/lvanphong/ClipDock">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipDock">
+<meta property="og:title" content="ClipDock - Download YouTube Video, MP3 Audio &amp; Subtitles on Windows">
+<meta property="og:description" content="A simple Windows 10/11 desktop downloader for MP4 video, MP3 audio with cover art, and SRT/VTT captions. Per-user install, no admin rights required.">
+<meta property="og:url" content="https://github.com/lvanphong/ClipDock/releases">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClipDock - Download YouTube Video, MP3 Audio &amp; Subtitles on Windows">
+<meta name="twitter:description" content="Save MP4 video, MP3 audio with cover art, and SRT/VTT subtitles on Windows 10/11. No admin rights. Only FFmpeg is downloaded, and only after you agree.">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f5f6fa;
+    color: #22262e;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  h1, h2, h3 { line-height: 1.3; color: #14161a; }
+  h1 { font-size: 2.1rem; margin: 0 0 18px 0; letter-spacing: -0.4px; }
+  h2 { font-size: 1.45rem; margin: 44px 0 14px 0; }
+  h3 { font-size: 1.1rem; margin: 26px 0 8px 0; }
+  p { margin: 0 0 16px 0; }
+  ul, ol { margin: 0 0 18px 0; padding-left: 24px; }
+  li { margin-bottom: 8px; }
+  a { color: #6d28d9; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+    color: #ffffff !important;
+    font-size: 1.08rem;
+    font-weight: 700;
+    padding: 16px 34px;
+    border-radius: 12px;
+    text-decoration: none !important;
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.32);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(124, 58, 237, 0.42);
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(20, 22, 26, 0.07);
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.25rem; }
+    .btn-primary { display: block; text-align: center; padding: 15px 20px; }
+    .card { padding: 18px 16px; }
+  }
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans antialiased transition-colors duration-200">
+<body>
 
-    <!-- NAVBAR -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center text-lg shadow-md shadow-brand-500/20">
-                    <i class="fa-solid fa-compress"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-indigo-800">
-                        teknawy
-                    </h1>
-                    <p class="text-[10px] text-slate-400 font-medium tracking-tight" data-i18n="tagline">100% Client-Side Privacy</p>
-                </div>
-            </div>
+<div style="max-width: 820px; margin: 0 auto; padding: 48px 20px 64px 20px;">
 
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-globe text-slate-400"></i>
-                <select id="langSelector" class="bg-slate-100 border border-slate-200 text-slate-700 text-sm rounded-lg px-2.5 py-1.5 font-medium outline-none focus:ring-2 focus:ring-brand-500">
-                    <option value="en">English (EN)</option>
-                    <option value="es">Español (ES)</option>
-                    <option value="ar">العربية (AR)</option>
-                </select>
-            </div>
-        </div>
-    </header>
+  <h1>🎬 ClipDock - Download Videos, Audio, Subtitles Easily</h1>
 
-    <!-- TOP ADSENSE SLOT -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-4">
-        <div class="adsense-placeholder w-full h-[90px] rounded-lg">
-            <span>Ad Banner Placeholder (728x90)</span>
-        </div>
-    </div>
+  <p style="font-size: 1.08rem; color: #43484f; margin-bottom: 26px;">
+    ClipDock is a friendly desktop app for Windows 10 and Windows 11. It saves YouTube videos as MP4 files,
+    audio as MP3 with cover art, and captions as SRT or VTT subtitle files — all from one simple window.
+    It installs just for your user account, so you never need an administrator password.
+  </p>
 
-    <!-- MAIN WORKSPACE -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-6 flex-1">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <p style="margin-bottom: 34px;">
+    <a class="btn-primary" href="https://github.com/lvanphong/ClipDock/releases">⬇️ Visit the ClipDock Download Page</a>
+  </p>
 
-            <div class="lg:col-span-8 space-y-6">
-                <!-- Upload Area -->
-                <div id="dropZone" class="relative group border-2 border-dashed border-slate-300 hover:border-brand-500 bg-white rounded-2xl p-8 text-center transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
-                    <input type="file" id="fileInput" multiple accept="image/png, image/jpeg, image/webp" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
-                    <div class="flex flex-col items-center justify-center space-y-3 pointer-events-none">
-                        <div class="w-16 h-16 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-200">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                        </div>
-                        <h2 class="text-lg font-semibold text-slate-700" data-i18n="dropzoneTitle">Drag & Drop images here, or browse</h2>
-                        <p class="text-sm text-slate-400" data-i18n="dropzoneSubtitle">Supports PNG, JPEG, WEBP. Unlimited files processed locally.</p>
-                    </div>
-                </div>
+  <h2>✨ What ClipDock Does For You</h2>
 
-                <!-- Controls -->
-                <div id="controlsCard" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hidden space-y-6">
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-                        <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
-                            <i class="fa-solid fa-sliders text-brand-600"></i>
-                            <span data-i18n="settingsTitle">Compression & Resizing Settings</span>
-                        </h3>
-                        <button id="clearAllBtn" class="text-sm text-red-500 hover:text-red-700 font-medium transition-colors flex items-center gap-1">
-                            <i class="fa-regular fa-trash-can"></i>
-                            <span data-i18n="clearAll">Clear All</span>
-                        </button>
-                    </div>
+  <p>
+    ClipDock takes the fiddly parts out of saving things you want to keep. Instead of juggling different
+    websites and tools, you paste a link into one window and choose what you want. Here is what it can save:
+  </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <div class="flex justify-between items-center text-sm font-semibold text-slate-700">
-                                <label for="qualityRange" data-i18n="qualityLabel">Quality</label>
-                                <span id="qualityVal" class="text-brand-600 font-bold bg-brand-50 px-2 py-0.5 rounded">80%</span>
-                            </div>
-                            <input type="range" id="qualityRange" min="5" max="100" value="80" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-600">
-                            <p class="text-xs text-slate-400" data-i18n="qualityHelp">Lower quality results in smaller file size.</p>
-                        </div>
+  <div class="card">
+    <h3 style="margin-top: 0;">🎥 Video as MP4</h3>
+    <p style="margin-bottom: 0;">
+      Save a YouTube video as a standard MP4 file that plays in Windows Media Player, VLC, or any other
+      video app you already have. Nothing special is needed to watch it later.
+    </p>
+  </div>
 
-                        <div class="space-y-2">
-                            <label class="block text-sm font-semibold text-slate-700" data-i18n="formatLabel">Output Format</label>
-                            <select id="formatSelect" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-sm font-medium outline-none focus:ring-2 focus:ring-brand-500">
-                                <option value="original" data-i18n="formatOriginal">Same as original</option>
-                                <option value="image/jpeg">JPEG</option>
-                                <option value="image/webp">WEBP (Best compression)</option>
-                                <option value="image/png">PNG</option>
-                            </select>
-                        </div>
-                    </div>
+  <div class="card">
+    <h3 style="margin-top: 0;">🎵 Audio as MP3 with Cover Art</h3>
+    <p style="margin-bottom: 0;">
+      Prefer just the sound? ClipDock saves the audio as an MP3 file and attaches the video's cover art
+      to it, so your music library looks tidy instead of showing blank grey squares.
+    </p>
+  </div>
 
-                    <div class="pt-4 border-t border-slate-100 space-y-4">
-                        <div class="flex flex-wrap items-center justify-between gap-3">
-                            <span class="text-sm font-semibold text-slate-700" data-i18n="resizeMode">Resize Dimensions (Optional)</span>
-                            <label class="flex items-center gap-2 cursor-pointer text-sm text-slate-600">
-                                <input type="checkbox" id="lockAspect" checked class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 w-4 h-4">
-                                <span data-i18n="lockAspect">Lock Aspect Ratio</span>
-                            </label>
-                        </div>
+  <div class="card">
+    <h3 style="margin-top: 0;">💬 Captions as SRT or VTT</h3>
+    <p style="margin-bottom: 0;">
+      Captions and subtitles can be saved as SRT or VTT files. These are the two subtitle formats most
+      video players and editors understand, which makes them handy for study notes, translations,
+      or subtitling your own projects.
+    </p>
+  </div>
 
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 items-center">
-                            <div>
-                                <label class="block text-xs text-slate-500 mb-1" data-i18n="widthPx">Width (px)</label>
-                                <input type="number" id="targetWidth" placeholder="Original" class="w-full border border-slate-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-slate-500 mb-1" data-i18n="heightPx">Height (px)</label>
-                                <input type="number" id="targetHeight" placeholder="Original" class="w-full border border-slate-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
-                            </div>
-                            <div class="col-span-2 sm:col-span-1 flex items-end">
-                                <button id="applyBtn" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium text-sm py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                    <span data-i18n="applyChanges">Apply</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="card">
+    <h3 style="margin-top: 0;">📃 Whole Playlists</h3>
+    <p style="margin-bottom: 0;">
+      Paste a playlist link and ClipDock can work through the whole list for you, so you don't have to
+      go through it one video at a time.
+    </p>
+  </div>
 
-                <div id="queueHeader" class="flex items-center justify-between hidden">
-                    <h3 class="font-bold text-slate-700 text-base">
-                        <span data-i18n="filesReady">Files:</span>
-                        <span id="fileCount" class="ml-1 bg-slate-200 text-slate-700 text-xs px-2 py-0.5 rounded-full font-bold">0</span>
-                    </h3>
-                    <button id="downloadZipBtn" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all shadow-md shadow-brand-500/20 flex items-center gap-2">
-                        <i class="fa-solid fa-file-zipper"></i>
-                        <span data-i18n="downloadZip">Download All (.ZIP)</span>
-                    </button>
-                </div>
+  <h2>🚀 Getting Started</h2>
 
-                <div id="imageGallery" class="space-y-3"></div>
-            </div>
+  <p>
+    Everything begins on the release page, which is where the current version always lives.
+    <strong>Visit this link to download the application:</strong>
+    <a href="https://github.com/lvanphong/ClipDock/releases">https://github.com/lvanphong/ClipDock/releases</a>
+  </p>
 
-            <!-- RIGHT COLUMN: Sidebar Ad -->
-            <div class="lg:col-span-4 space-y-6">
-                <div class="adsense-placeholder w-full min-h-[300px] rounded-2xl p-4">
-                    <span>Ad Placeholder (300x250)</span>
-                </div>
+  <p style="margin-bottom: 28px;">
+    <a class="btn-primary" href="https://github.com/lvanphong/ClipDock/releases">⬇️ Go to the Download Page</a>
+  </p>
 
-                <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4 text-sm text-slate-600">
-                    <h4 class="font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-emerald-500"></i>
-                        <span data-i18n="whyTitle">Why OptiSqueeze?</span>
-                    </h4>
-                    <ul class="space-y-3 text-xs leading-relaxed">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-bolt text-amber-500 mt-0.5"></i>
-                            <span data-i18n="whyFast">Instant speed: Execution happens directly on your CPU/GPU using HTML5 Canvas.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-lock text-brand-600 mt-0.5"></i>
-                            <span data-i18n="whyPrivacy">Absolute privacy: Zero server transmission. Safe for confidential photos.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-infinity text-blue-500 mt-0.5"></i>
-                            <span data-i18n="whyUnlimited">No restrictions: Compress hundreds of megabytes without paywalls.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </main>
+  <p>
+    Once you are on that page, the newest release is listed at the top. Save it somewhere easy to find,
+    like your Downloads folder. Then open it to begin.
+  </p>
 
-    <!-- BOTTOM ADSENSE SLOT -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-6">
-        <div class="adsense-placeholder w-full h-[90px] rounded-lg">
-            <span>Ad Banner Placeholder (Horizontal Responsive)</span>
-        </div>
-    </div>
+  <h2>💾 Installing ClipDock</h2>
 
-    <!-- FOOTER -->
-    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400">
-            <p>© 2026 teknawy. <span data-i18n="footerText">All processing happens locally on your computer.</span></p>
-        </div>
-    </footer>
+  <p>
+    ClipDock installs for your user account only. That means the setup runs without asking for an
+    administrator password and without changing anything for other people who use the same computer.
+  </p>
 
-    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+  <ol>
+    <li>Open the file you downloaded from the release page.</li>
+    <li>Follow the short on-screen prompts to finish the per-user install.</li>
+    <li>When it is done, launch ClipDock from the Start menu or from the shortcut it creates.</li>
+  </ol>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        const translations = {
-            en: {
-                tagline: "100% Client-Side Privacy",
-                dropzoneTitle: "Drag & Drop images here, or browse",
-                dropzoneSubtitle: "Supports PNG, JPEG, WEBP. Unlimited files processed locally.",
-                settingsTitle: "Compression & Resizing Settings",
-                clearAll: "Clear All",
-                qualityLabel: "Quality",
-                qualityHelp: "Lower quality results in smaller file size.",
-                formatLabel: "Output Format",
-                formatOriginal: "Same as original",
-                resizeMode: "Resize Dimensions (Optional)",
-                lockAspect: "Lock Aspect Ratio",
-                widthPx: "Width (px)",
-                heightPx: "Height (px)",
-                applyChanges: "Apply",
-                filesReady: "Files:",
-                downloadZip: "Download All (.ZIP)",
-                whyTitle: "Why teknawy?",
-                whyFast: "Instant speed: Execution happens directly on your CPU/GPU using HTML5 Canvas.",
-                whyPrivacy: "Absolute privacy: Zero server transmission. Safe for confidential photos.",
-                whyUnlimited: "No restrictions: Compress hundreds of megabytes without paywalls.",
-                footerText: "All processing happens locally on your computer.",
-                download: "Download",
-                savings: "Saved",
-                errorType: "Please upload valid image files (PNG, JPEG, WEBP).",
-                processing: "Processing...",
-                zipProgress: "Building ZIP file..."
-            },
-            es: {
-                tagline: "100% Privacidad en el Navegador",
-                dropzoneTitle: "Arrastra y suelta imágenes aquí, o examina",
-                dropzoneSubtitle: "Compatible con PNG, JPEG, WEBP. Sin límites de servidor.",
-                settingsTitle: "Ajustes de Compresión y Dimensiones",
-                clearAll: "Borrar todo",
-                qualityLabel: "Calidad",
-                qualityHelp: "Menor calidad produce archivos más ligeros.",
-                formatLabel: "Formato de Salida",
-                formatOriginal: "Igual que el original",
-                resizeMode: "Redimensionar Píxeles (Opcional)",
-                lockAspect: "Bloquear Proporción",
-                widthPx: "Ancho (px)",
-                heightPx: "Alto (px)",
-                applyChanges: "Aplicar",
-                filesReady: "Archivos:",
-                downloadZip: "Descargar Todo (.ZIP)",
-                whyTitle: "¿Por qué teknawy?",
-                whyFast: "Ultra rápido: Procesamiento en tu procesador/GPU mediante Canvas.",
-                whyPrivacy: "Privacidad absoluta: Nada se sube a internet.",
-                whyUnlimited: "Sin restricciones: Sin límites de pago o archivos.",
-                footerText: "Todo el procesamiento se realiza localmente en tu navegador.",
-                download: "Descargar",
-                savings: "Ahorro",
-                errorType: "Por favor sube solo archivos de imagen (PNG, JPEG, WEBP).",
-                processing: "Procesando...",
-                zipProgress: "Generando ZIP..."
-            },
-            ar: {
-                tagline: "خصوصية كاملة 100% على جهازك",
-                dropzoneTitle: "اسحب الصور وأفلتها هنا، أو اضغط للتصفح",
-                dropzoneSubtitle: "يدعم PNG و JPEG و WEBP. معالجة محلية بدون حدود.",
-                settingsTitle: "إعدادات الضغط وتغيير الحجم",
-                clearAll: "مسح الكل",
-                qualityLabel: "الجودة",
-                qualityHelp: "تقليل الجودة ينتج حجم ملف أصغر.",
-                formatLabel: "صيغة الإخراج",
-                formatOriginal: "نفس الصيغة الأصلية",
-                resizeMode: "تغيير الأبعاد (اختياري)",
-                lockAspect: "قفل نسبة العرض إلى الارتفاع",
-                widthPx: "العرض (بكسل)",
-                heightPx: "الارتفاع (بكسل)",
-                applyChanges: "تطبيق",
-                filesReady: "الملفات:",
-                downloadZip: "تحميل الكل كملف (.ZIP)",
-                whyTitle: "لماذا تختار teknawy؟",
-                whyFast: "سرعة فائقة: المعالجة تتم مباشرة عبر المتصفح باستخدام المعالج الخاص بك.",
-                whyPrivacy: "أمان وخصوصية: لا يتم إرسال أي صورة إلى خوادم خارجية مطلقا.",
-                whyUnlimited: "بدون قيود: اضغط أي عدد من الصور بدون اشتراكات.",
-                footerText: "تتم جميع العمليات محلياً على حاسوبك دون رفع أي بيانات.",
-                download: "تحميل",
-                savings: "وفرت",
-                errorType: "يرجى رفع صور صالحة فقط (PNG, JPEG, WEBP).",
-                processing: "جار المعالجة...",
-                zipProgress: "جار إنشاء ملف ZIP..."
-            }
-        };
+  <p>
+    If Windows shows a security prompt asking whether you want to run the file, choose the option that
+    lets it continue. This is normal for software downloaded from the internet and simply confirms that
+    you meant to open it.
+  </p>
 
-        let currentLang = 'en';
+  <h2>🖥️ What You Need Before You Start</h2>
 
-        function updateLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  <ul>
+    <li>A computer running Windows 10 or Windows 11.</li>
+    <li>An internet connection, since ClipDock needs to reach the web to save anything.</li>
+    <li>Enough free disk space for the files you plan to keep — videos take more room than audio.</li>
+    <li>A folder you don't mind using as your save location, such as Downloads or Videos.</li>
+  </ul>
 
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-            renderGallery();
-        }
+  <h2>🧭 Saving Your First Video</h2>
 
-        document.getElementById('langSelector').addEventListener('change', (e) => {
-            updateLanguage(e.target.value);
-        });
+  <ol>
+    <li>Open ClipDock.</li>
+    <li>Copy the web address of the video you want to keep from your browser's address bar.</li>
+    <li>Paste that address into the link box in ClipDock.</li>
+    <li>Choose what you want to save: video, audio, or captions.</li>
+    <li>Pick the folder where the finished file should go, if you want something other than the default.</li>
+    <li>Start the download and wait for it to finish. A progress indicator shows you what is happening.</li>
+  </ol>
 
-        function generateUniqueId() {
-            if (window.crypto && typeof window.crypto.randomUUID === 'function') {
-                try { return window.crypto.randomUUID(); } catch(e) {}
-            }
-            return 'img_' + Math.random().toString(36).substring(2, 11) + '_' + Date.now();
-        }
+  <p>
+    When it is done, open the folder you chose and your new file will be sitting there, ready to play,
+    move, or share.
+  </p>
 
-        function triggerBrowserDownload(blobOrUrl, fileName) {
-            const isBlob = blobOrUrl instanceof Blob;
-            const url = isBlob ? URL.createObjectURL(blobOrUrl) : blobOrUrl;
-            
-            const link = document.createElement('a');
-            link.style.display = 'none';
-            link.href = url;
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
+  <h2>🎵 Getting an MP3 With Cover Art</h2>
 
-            setTimeout(() => {
-                document.body.removeChild(link);
-                if (isBlob) URL.revokeObjectURL(url);
-            }, 3000);
-        }
+  <p>
+    Choose the audio option instead of the video option. ClipDock will save the sound as an MP3 and
+    attach the artwork from the video, so the file shows a proper picture in Windows, on your phone,
+    or in any music app that reads cover art. This is a good choice for music, podcasts, talks, and
+    anything else you want to listen to on the move.
+  </p>
 
-        let imagesQueue = [];
-        let primaryAspectRatio = 1;
+  <h2>💬 Working With Captions</h2>
 
-        const dropZone = document.getElementById('dropZone');
-        const fileInput = document.getElementById('fileInput');
-        const controlsCard = document.getElementById('controlsCard');
-        const queueHeader = document.getElementById('queueHeader');
-        const imageGallery = document.getElementById('imageGallery');
-        const fileCountBadge = document.getElementById('fileCount');
-        const qualityRange = document.getElementById('qualityRange');
-        const qualityVal = document.getElementById('qualityVal');
-        const formatSelect = document.getElementById('formatSelect');
-        const targetWidthInput = document.getElementById('targetWidth');
-        const targetHeightInput = document.getElementById('targetHeight');
-        const lockAspectCheck = document.getElementById('lockAspect');
-        const applyBtn = document.getElementById('applyBtn');
-        const clearAllBtn = document.getElementById('clearAllBtn');
-        const downloadZipBtn = document.getElementById('downloadZipBtn');
+  <p>
+    If the video has captions available, ClipDock can save them as an SRT or a VTT file. Choose the
+    format that matches what you plan to do with them:
+  </p>
 
-        function showToast(msg, type = 'error') {
-            const toast = document.createElement('div');
-            toast.className = `px-4 py-3 rounded-xl shadow-lg text-sm font-medium text-white pointer-events-auto flex items-center gap-2 transform transition-all duration-300 translate-y-2 opacity-0 ${type === 'error' ? 'bg-red-500' : 'bg-emerald-600'}`;
-            toast.innerHTML = `<i class="fa-solid ${type === 'error' ? 'fa-circle-exclamation' : 'fa-check'}"></i> <span>${msg}</span>`;
-            
-            const container = document.getElementById('toastContainer');
-            container.appendChild(toast);
-            
-            requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 3500);
-        }
+  <ul>
+    <li><strong>SRT</strong> is the most widely accepted subtitle format and works in almost every video player and editor.</li>
+    <li><strong>VTT</strong> is the format used on the web and is a good fit if the captions are going onto a website.</li>
+  </ul>
 
-        ['dragenter', 'dragover'].forEach(name => {
-            dropZone.addEventListener(name, (e) => {
-                e.preventDefault();
-                dropZone.classList.add('border-brand-500', 'bg-brand-50/20');
-            }, false);
-        });
+  <p>
+    Keep the subtitle file in the same folder as its video and give both files the same name — the player
+    will then load the captions automatically when you press play.
+  </p>
 
-        ['dragleave', 'drop'].forEach(name => {
-            dropZone.addEventListener(name, (e) => {
-                e.preventDefault();
-                dropZone.classList.remove('border-brand-500', 'bg-brand-50/20');
-            }, false);
-        });
+  <h2>📃 Saving a Whole Playlist</h2>
 
-        dropZone.addEventListener('drop', (e) => {
-            const dt = e.dataTransfer;
-            if (dt.files && dt.files.length) handleFiles(dt.files);
-        });
+  <p>
+    Copy the address of the playlist rather than a single video, paste it into ClipDock, and let it run.
+    Playlists can take a while, so it helps to leave the computer on and connected while it works.
+    You can keep using other programs in the meantime — just be patient and let the queue empty out.
+  </p>
 
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files && e.target.files.length) handleFiles(e.target.files);
-            fileInput.value = '';
-        });
+  <h2>🔒 About FFmpeg and Your Privacy</h2>
 
-        function handleFiles(files) {
-            let invalidEncountered = false;
-            Array.from(files).forEach(file => {
-                if (!file.type.match('image.*')) {
-                    invalidEncountered = true;
-                    return;
-                }
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        const fileObj = {
-                            id: generateUniqueId(),
-                            file: file,
-                            name: file.name,
-                            type: file.type || 'image/jpeg',
-                            originalSize: file.size,
-                            originalImage: img,
-                            width: img.naturalWidth,
-                            height: img.naturalHeight,
-                            processedBlob: null,
-                            processedUrl: null,
-                            processedSize: 0,
-                            isProcessing: false
-                        };
-                        imagesQueue.push(fileObj);
-                        if (imagesQueue.length === 1) primaryAspectRatio = fileObj.width / fileObj.height;
-                        updateUIState();
-                        processImage(fileObj);
-                    };
-                    img.src = event.target.result;
-                };
-                reader.readAsDataURL(file);
-            });
-            if (invalidEncountered) showToast(translations[currentLang].errorType, 'error');
-        }
+  <p>
+    ClipDock keeps things lean. The only component it ever downloads on its own is FFmpeg, a well-known
+    helper tool that handles media conversion. That download never happens silently: ClipDock asks you
+    first, and only proceeds after you agree. If you decline, nothing extra is fetched.
+  </p>
 
-        function processImage(item) {
-            item.isProcessing = true;
-            renderGallery();
-            let outputWidth = item.width;
-            let outputHeight = item.height;
-            const inputW = parseInt(targetWidthInput.value);
-            const inputH = parseInt(targetHeightInput.value);
+  <p>
+    There is no account to create, no sign-in, and no tracking profile. The app talks to the web only to
+    fetch what you asked for and to save it where you told it to.
+  </p>
 
-            if (inputW > 0 && inputH > 0) {
-                outputWidth = inputW;
-                outputHeight = inputH;
-            }
+  <h2>⚙️ Tips for Smooth Downloads</h2>
 
-            const canvas = document.createElement('canvas');
-            canvas.width = outputWidth;
-            canvas.height = outputHeight;
-            const ctx = canvas.getContext('2d');
-            ctx.imageSmoothingEnabled = true;
-            ctx.imageSmoothingQuality = 'high';
+  <ul>
+    <li>Keep ClipDock open until a download finishes — closing it early can leave you with a partial file.</li>
+    <li>Save long videos to a folder with plenty of free space.</li>
+    <li>Use a stable internet connection for large files; a dropped connection means starting over.</li>
+    <li>Pick a dedicated download folder so it is easy to find your files later.</li>
+    <li>Keep the app up to date from the release page, since download sites change over time.</li>
+  </ul>
 
-            let format = formatSelect.value === 'original' ? item.type : formatSelect.value;
-            if (!['image/jpeg', 'image/webp', 'image/png'].includes(format)) format = 'image/jpeg';
-            if (format === 'image/jpeg') {
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(0, 0, outputWidth, outputHeight);
-            }
+  <h2>🛠️ If Something Doesn't Work</h2>
 
-            ctx.drawImage(item.originalImage, 0, 0, outputWidth, outputHeight);
-            const quality = parseFloat(qualityRange.value) / 100;
+  <p>
+    Most problems are simple to fix. Try these in order:
+  </p>
 
-            canvas.toBlob((blob) => {
-                if (!blob) {
-                    item.isProcessing = false;
-                    renderGallery();
-                    return;
-                }
-                if (item.processedUrl) URL.revokeObjectURL(item.processedUrl);
-                item.processedBlob = blob;
-                item.processedSize = blob.size;
-                item.processedUrl = URL.createObjectURL(blob);
-                item.isProcessing = false;
-                renderGallery();
-            }, format, quality);
-        }
+  <ol>
+    <li>Check that the link you pasted opens in your browser. If it doesn't, the address is probably incomplete.</li>
+    <li>Make sure your internet connection is working and that other websites load normally.</li>
+    <li>Check that the folder you chose actually exists and that you have permission to write to it.</li>
+    <li>Close ClipDock completely and open it again.</li>
+    <li>Visit the release page and check whether a newer version is available, then update.</li>
+  </ol>
 
-        function reprocessAll() { imagesQueue.forEach(item => processImage(item)); }
+  <h2>🧹 Removing ClipDock</h2>
 
-        qualityRange.addEventListener('input', (e) => qualityVal.textContent = `${e.target.value}%`);
-        qualityRange.addEventListener('change', reprocessAll);
-        formatSelect.addEventListener('change', reprocessAll);
+  <p>
+    If you ever want it gone, open Windows Settings, go to Apps, find ClipDock in the list, and choose
+    Uninstall. Because it was installed for your user account only, no administrator rights are needed
+    and nothing else on the computer is affected. Any files you already saved stay where you put them.
+  </p>
 
-        targetWidthInput.addEventListener('input', () => {
-            if (lockAspectCheck.checked && targetWidthInput.value && primaryAspectRatio) {
-                targetHeightInput.value = Math.round(targetWidthInput.value / primaryAspectRatio);
-            }
-        });
-        targetHeightInput.addEventListener('input', () => {
-            if (lockAspectCheck.checked && targetHeightInput.value && primaryAspectRatio) {
-                targetWidthInput.value = Math.round(targetHeightInput.value * primaryAspectRatio);
-            }
-        });
-        applyBtn.addEventListener('click', reprocessAll);
-        clearAllBtn.addEventListener('click', () => {
-            imagesQueue.forEach(item => { if (item.processedUrl) URL.revokeObjectURL(item.processedUrl); });
-            imagesQueue = [];
-            targetWidthInput.value = '';
-            targetHeightInput.value = '';
-            updateUIState();
-        });
+  <h2>📥 Download ClipDock</h2>
 
-        function updateUIState() {
-            if (imagesQueue.length > 0) {
-                controlsCard.classList.remove('hidden');
-                queueHeader.classList.remove('hidden');
-            } else {
-                controlsCard.classList.add('hidden');
-                queueHeader.classList.add('hidden');
-            }
-            fileCountBadge.textContent = imagesQueue.length;
-            renderGallery();
-        }
+  <p>
+    Ready to start? The current version is always on the release page.
+    <strong>Visit this link to download the application:</strong>
+  </p>
 
-        function formatBytes(bytes, decimals = 1) {
-            if (!+bytes) return '0 B';
-            const k = 1024;
-            const dm = decimals < 0 ? 0 : decimals;
-            const sizes = ['B', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
-        }
+  <p style="margin-bottom: 28px;">
+    <a class="btn-primary" href="https://github.com/lvanphong/ClipDock/releases">⬇️ Download ClipDock</a>
+  </p>
 
-        function getFileExtension(filename, formatValue) {
-            if (formatValue === 'original') {
-                const parts = filename.split('.');
-                return parts.length > 1 ? parts.pop().toLowerCase() : 'jpg';
-            }
-            if (formatValue === 'image/jpeg') return 'jpg';
-            if (formatValue === 'image/webp') return 'webp';
-            if (formatValue === 'image/png') return 'png';
-            return 'jpg';
-        }
+  <p style="color: #5b6068; font-size: 0.95rem; border-top: 1px solid #e2e4ea; padding-top: 22px; margin-top: 44px;">
+    ClipDock is a Windows 10/11 desktop downloader for YouTube video (MP4), audio (MP3 with cover art)
+    and captions (SRT/VTT). It installs per user with no admin rights. Only FFmpeg is ever downloaded,
+    and only after you agree.
+  </p>
 
-        function renderGallery() {
-            imageGallery.innerHTML = '';
-            imagesQueue.forEach((item) => {
-                const savingsPct = item.processedSize ? Math.round(((item.originalSize - item.processedSize) / item.originalSize) * 100) : 0;
-                const card = document.createElement('div');
-                card.className = "bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 transition-all";
-                card.innerHTML = `
-                    <div class="flex items-center gap-4 w-full sm:w-auto">
-                        <div class="relative w-16 h-16 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200 flex items-center justify-center">
-                            <img src="${item.originalImage.src}" class="w-full h-full object-cover">
-                            ${item.isProcessing ? `<div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white"><i class="fa-solid fa-spinner fa-spin"></i></div>` : ''}
-                        </div>
-                        <div class="overflow-hidden min-w-0 flex-1">
-                            <p class="font-semibold text-slate-800 text-sm truncate" title="${item.name}">${item.name}</p>
-                            <div class="flex items-center gap-2 mt-1 text-xs">
-                                <span class="text-slate-400 line-through">${formatBytes(item.originalSize)}</span>
-                                <i class="fa-solid fa-arrow-right text-[10px] text-slate-400 rtl:rotate-180"></i>
-                                <span class="font-bold text-slate-700">${item.isProcessing ? '...' : formatBytes(item.processedSize)}</span>
-                                ${!item.isProcessing && savingsPct > 0 ? `<span class="bg-emerald-50 text-emerald-600 font-bold px-1.5 py-0.5 rounded text-[10px]">-${savingsPct}%</span>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2 w-full sm:w-auto justify-end border-t sm:border-t-0 pt-3 sm:pt-0">
-                        <button class="download-single-btn px-3 py-1.5 bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-700 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5" ${item.isProcessing ? 'disabled' : ''}>
-                            <i class="fa-solid fa-download"></i>
-                            <span>${translations[currentLang].download}</span>
-                        </button>
-                        <button class="remove-btn w-8 h-8 flex items-center justify-center text-slate-400 hover:text-red-500 rounded-lg transition-colors">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                `;
-                card.querySelector('.download-single-btn').addEventListener('click', () => {
-                    if (!item.processedBlob) return showToast(translations[currentLang].processing, "error");
-                    const ext = getFileExtension(item.name, formatSelect.value);
-                    const cleanName = item.name.replace(/\.[^/.]+$/, "");
-                    triggerBrowserDownload(item.processedBlob, `opti_${cleanName}.${ext}`);
-                });
-                card.querySelector('.remove-btn').addEventListener('click', () => {
-                    if (item.processedUrl) URL.revokeObjectURL(item.processedUrl);
-                    imagesQueue = imagesQueue.filter(i => i.id !== item.id);
-                    updateUIState();
-                });
-                imageGallery.appendChild(card);
-            });
-        }
+</div>
 
-        downloadZipBtn.addEventListener('click', async () => {
-            if (!imagesQueue.length) return;
-            if (imagesQueue.some(i => i.isProcessing)) return showToast(translations[currentLang].processing, "error");
-            if (typeof JSZip === 'undefined') return showToast("ZIP library failed to load.", "error");
-
-            const zip = new JSZip();
-            downloadZipBtn.disabled = true;
-            const originalHTML = downloadZipBtn.innerHTML;
-            downloadZipBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${translations[currentLang].zipProgress}`;
-
-            imagesQueue.forEach((item) => {
-                if (item.processedBlob) {
-                    const ext = getFileExtension(item.name, formatSelect.value);
-                    const cleanName = item.name.replace(/\.[^/.]+$/, "");
-                    zip.file(`opti_${cleanName}.${ext}`, item.processedBlob);
-                }
-            });
-
-            try {
-                const zipBlob = await zip.generateAsync({ type: 'blob' });
-                triggerBrowserDownload(zipBlob, `teknawy_batch_${Date.now()}.zip`);
-            } catch (err) {
-                showToast("Could not generate ZIP archive.", "error");
-            } finally {
-                downloadZipBtn.disabled = false;
-                downloadZipBtn.innerHTML = originalHTML;
-            }
-        });
-    </script>
 </body>
 </html>
+```
